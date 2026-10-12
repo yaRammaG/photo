@@ -1,0 +1,11 @@
+# photofolio 站点配置
+title: "My Photofolio"        # 站点标题
+author: "Your Name"           # 作者名
+about: |                      # About 页文字
+  在这里写下你的简介……
+social:
+  github: ""                  # 如 https://github.com/xxx
+  instagram: ""               # 如 https://instagram.com/xxx
+  email: ""                   # 如 me@example.com
+hero_photo: ""                # 首页主图，如 photos/street/001.jpg
+custom_domain: ""             # 自定义域名，如 photo.example.com（留空则用 github.io）
