@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ site.title }}</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="{{ rel }}/static/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@5.4.4/dist/photoswipe.css">
+</head>
+<body>
+  <nav class="nav" id="nav">
+    <a class="brand" href="{{ rel }}/index.html">{{ site.title }}</a>
+    <div class="nav-links">
+      <a href="{{ rel }}/index.html#work">Work</a>
+      <a href="{{ rel }}/about/">About</a>
+      {% if site.social.email %}
+      <a href="mailto:{{ site.social.email }}">Contact</a>
+      {% else %}
+      <a href="{{ rel }}/index.html#contact">Contact</a>
+      {% endif %}
+    </div>
+  </nav>
+
+  {% block content %}{% endblock %}
+
+  <footer class="footer" id="contact">
+    <div class="footer-inner">
+      <span class="copyright">&copy; {{ year }} {{ site.author or site.title }}</span>
+      <div class="footer-links">
+        {% for key, url in site.social.items() if url %}
+        {% set href = 'mailto:' ~ url if key == 'email' and not url.startswith('mailto:') else url %}
+        <a href="{{ href }}" target="_blank" rel="noopener">{{ key }}</a>
+        {% endfor %}
+      </div>
+    </div>
+  </footer>
+
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/photoswipe@5.4.4/dist/umd/photoswipe-lightbox.umd.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/photoswipe@5.4.4/dist/umd/photoswipe.umd.min.js"></script>
+  <script defer src="{{ rel }}/static/main.js"></script>
+</body>
+</html>

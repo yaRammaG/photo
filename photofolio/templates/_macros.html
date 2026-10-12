@@ -1,0 +1,22 @@
+{% macro photo_grid(photos, prefix, ns, eager_limit=4) %}
+<div class="grid">
+  {% for photo in photos %}
+  {% set display_url = prefix ~ photo.display %}
+  {% set thumb_url = prefix ~ photo.thumb %}
+  <figure class="photo photo--{{ photo.orientation }}"
+          data-display="{{ display_url }}"
+          data-full="{{ prefix ~ photo.full }}"
+          data-exif="{{ photo.exif.line }}">
+    <img src="{{ thumb_url }}"
+         srcset="{{ thumb_url }} {{ [600, photo.width] | min }}w{% if photo.display != photo.thumb %}, {{ display_url }} {{ photo.width }}w{% endif %}"
+         sizes="(max-width: 768px) 92vw, 50vw"
+         width="{{ photo.width }}" height="{{ photo.height }}"
+         style="background-image:url('{{ photo.lqip }}')"
+         {% if ns.rendered < eager_limit %}loading="eager"{% else %}loading="lazy"{% endif %}
+         decoding="async"
+         alt="{{ photo.title or photo.id }}">
+    {% set ns.rendered = ns.rendered + 1 %}
+  </figure>
+  {% endfor %}
+</div>
+{% endmacro %}

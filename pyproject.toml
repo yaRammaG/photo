@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "photofolio"
+version = "0.1.0"
+description = "静态摄影作品图库生成器"
+requires-python = ">=3.11"
+dependencies = [
+    "Pillow>=10.0",
+    "Jinja2>=3.1",
+    "PyYAML>=6.0",
+    "click>=8.1",
+    "ghp-import>=2.1.0",
+]
+
+[project.scripts]
+photofolio = "photofolio.cli:cli"
+
+[tool.setuptools.packages.find]
+include = ["photofolio*"]
+
+[tool.setuptools.package-data]
+photofolio = ["templates/*.html", "templates/static/*"]

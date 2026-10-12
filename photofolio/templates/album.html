@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% from "_macros.html" import photo_grid %}
+{% block content %}
+<main class="content" id="work">
+  <header class="album-head album-head--page">
+    <h1>{{ album.title }}</h1>
+    <span class="album-count">{{ album.count }}</span>
+  </header>
+
+  {% set ns = namespace(rendered=0) %}
+  {{ photo_grid(album.photos, "", ns) }}
+
+  <nav class="album-next">
+    <span class="album-next-label">Next series</span>
+    {% if next_album %}
+    <a href="../{{ next_album.slug }}/">{{ next_album.title }} &rarr;</a>
+    {% else %}
+    <a href="{{ rel }}/index.html">&larr; All works</a>
+    {% endif %}
+  </nav>
+</main>
+{% endblock %}

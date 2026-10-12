@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<main class="content about-page">
+  <header class="album-head album-head--page">
+    <h1>About</h1>
+  </header>
+
+  <div class="about-grid">
+    <div class="about-text">{{ site.about }}</div>
+    {% if about_photo %}
+    <figure class="about-photo">
+      <img src="{{ about_photo.thumb }}"
+           srcset="{{ about_photo.thumb }} {{ [600, about_photo.width] | min }}w{% if about_photo.display != about_photo.thumb %}, {{ about_photo.display }} {{ about_photo.width }}w{% endif %}"
+           sizes="(max-width: 768px) 92vw, 40vw"
+           width="{{ about_photo.width }}" height="{{ about_photo.height }}"
+           style="background-image:url('{{ about_photo.lqip }}')"
+           loading="eager" decoding="async"
+           alt="{{ site.author }} portrait">
+    </figure>
+    {% endif %}
+  </div>
+</main>
+{% endblock %}
