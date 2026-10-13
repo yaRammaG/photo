@@ -3,14 +3,22 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{ site.title }}</title>
+  <title>{{ site.title }}{% if site.tagline %} — {{ site.tagline }}{% endif %}</title>
+  <meta name="description" content="{{ site.statement or site.about or site.title }}">
+  <meta name="theme-color" content="#f5f2ec">
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/cormorant-garamond@5/500.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/cormorant-garamond@5/500-italic.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/cormorant-garamond@5/600.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/noto-serif-sc@5/400.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/noto-serif-sc@5/600.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/ibm-plex-mono@5/400.css">
   <link rel="stylesheet" href="{{ rel }}/static/style.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@5.4.4/dist/photoswipe.css">
 </head>
 <body>
   <nav class="nav" id="nav">
-    <a class="brand" href="{{ rel }}/index.html">{{ site.title }}</a>
+    <a class="brand" href="{{ rel }}/index.html">{{ site.title }}<em>.</em></a>
     <div class="nav-links">
       <a href="{{ rel }}/index.html#work">Work</a>
       <a href="{{ rel }}/about/">About</a>
@@ -26,12 +34,21 @@
 
   <footer class="footer" id="contact">
     <div class="footer-inner">
-      <span class="copyright">&copy; {{ year }} {{ site.author or site.title }}</span>
-      <div class="footer-links">
-        {% for key, url in site.social.items() if url %}
-        {% set href = 'mailto:' ~ url if key == 'email' and not url.startswith('mailto:') else url %}
-        <a href="{{ href }}" target="_blank" rel="noopener">{{ key }}</a>
-        {% endfor %}
+      <div class="footer-brand">
+        <span class="footer-wordmark">{{ site.title }}<em>.</em></span>
+        {% if site.tagline %}
+        <span class="footer-tagline">{{ site.tagline }}</span>
+        {% endif %}
+      </div>
+      <div class="footer-meta">
+        <span class="copyright">&copy; {{ year }} {{ site.author or site.title }}</span>
+        <div class="footer-links">
+          {% for key, url in site.social.items() if url %}
+          {% set href = 'mailto:' ~ url if key == 'email' and not url.startswith('mailto:') else url %}
+          <a href="{{ href }}" target="_blank" rel="noopener">{{ key }}</a>
+          {% endfor %}
+          <a href="#">Top</a>
+        </div>
       </div>
     </div>
   </footer>

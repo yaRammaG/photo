@@ -3,8 +3,9 @@
 {% block content %}
 <main class="content" id="work">
   <header class="album-head album-head--page">
+    <span class="album-no">Series</span>
     <h1>{{ album.title }}</h1>
-    <span class="album-count">{{ album.count }}</span>
+    <span class="album-count">{{ album.count }} photographs</span>
   </header>
 
   {% set ns = namespace(rendered=0) %}

@@ -54,7 +54,7 @@
     var gsap = window.gsap;
     gsap.registerPlugin(window.ScrollTrigger);
 
-    var heroTitle = document.querySelector(".hero-title");
+    var heroTitle = document.querySelector(".hero-title, .cover-title");
     if (heroTitle) {
       gsap.from(heroTitle, {
         opacity: 0,

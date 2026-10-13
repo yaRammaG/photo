@@ -1,6 +1,9 @@
 # photofolio 站点配置
-title: "My Photofolio"        # 站点标题
-author: "Your Name"           # 作者名
+title: "Takepic"                # 站点标题
+tagline: "Gammaray Photography · 伽玛锐摄影"
+statement: |                    # 首页封面的一句话（可自行修改）
+  在街角、生灵与人群之间，收集那些恰好落下的光。
+author: "伽玛锐摄影"          # 作者名
 about: |                      # About 页文字
   在这里写下你的简介……
 social:

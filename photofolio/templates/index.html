@@ -12,7 +12,19 @@
        loading="eager" fetchpriority="high" decoding="async"
        alt="{{ site.title }}">
   <div class="hero-shade"></div>
+  {% if site.tagline %}
+  <p class="hero-kicker">{{ site.tagline }}</p>
+  {% endif %}
   <h1 class="hero-title">{{ site.title }}</h1>
+</section>
+{% else %}
+<section class="cover">
+  <p class="cover-kicker">{{ site.tagline or "Photography Portfolio" }}</p>
+  <h1 class="cover-title">{{ site.title }}<em>.</em></h1>
+  {% if site.statement %}
+  <p class="cover-statement">{{ site.statement }}</p>
+  {% endif %}
+  <div class="cover-rule"></div>
 </section>
 {% endif %}
 
@@ -21,13 +33,14 @@
   {% for album in albums %}
   <section class="album">
     <header class="album-head">
+      <span class="album-no">{{ '%02d' | format(loop.index) }}</span>
       <h2>{{ album.title }}</h2>
-      <span class="album-count">{{ album.count }}</span>
-      <a class="album-link" href="albums/{{ album.slug }}/">View album</a>
+      <span class="album-count">{{ album.count }} photographs</span>
+      <a class="album-link" href="albums/{{ album.slug }}/">View series &rarr;</a>
     </header>
     {{ photo_grid(album.photos[:6], "albums/" ~ album.slug ~ "/", ns) }}
     {% if album.count > 6 %}
-    <a class="album-more" href="albums/{{ album.slug }}/">View all {{ album.count }} photos</a>
+    <a class="album-more" href="albums/{{ album.slug }}/">All {{ album.count }} photographs &rarr;</a>
     {% endif %}
   </section>
   {% endfor %}
