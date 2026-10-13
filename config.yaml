@@ -2,13 +2,15 @@
 title: "Takepic"                # 站点标题
 tagline: "Gammaray Photography · 伽玛锐摄影"
 statement: |                    # 首页封面的一句话（可自行修改）
-  在街角、生灵与人群之间，收集那些恰好落下的光。
+  常驻上海、苏州，业余摄影师，积累样片中。
 author: "伽玛锐摄影"          # 作者名
 about: |                      # About 页文字
-  在这里写下你的简介……
+  常驻上海、苏州，业余摄影师，积累样片中。
+  在街角、生灵与人群之间，收集那些恰好落下的光。
 social:
   github: ""                  # 如 https://github.com/xxx
   instagram: ""               # 如 https://instagram.com/xxx
   email: ""                   # 如 me@example.com
-hero_photo: ""                # 首页主图，如 photos/street/001.jpg
+  wechat: ""                  # 微信号（选填，配合 photos/qr.png 二维码展示）
+hero_photo: "photos/城市/西山大桥.jpg"  # 首页主图
 custom_domain: ""             # 自定义域名，如 photo.example.com（留空则用 github.io）

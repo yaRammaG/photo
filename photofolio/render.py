@@ -25,6 +25,7 @@ def render_site(
     albums: list[dict],
     hero: dict | None = None,
     about_photo: dict | None = None,
+    qr_photo: dict | None = None,
 ) -> None:
     env = _env()
     year = datetime.now().year
@@ -42,7 +43,7 @@ def render_site(
     # 首页（精选）
     (dist / "index.html").write_text(
         env.get_template("index.html").render(
-            site=site, albums=albums, hero=hero, rel=".", year=year
+            site=site, albums=albums, hero=hero, qr=qr_photo, rel=".", year=year
         ),
         encoding="utf-8",
     )
@@ -54,7 +55,8 @@ def render_site(
         page.parent.mkdir(parents=True, exist_ok=True)
         page.write_text(
             env.get_template("album.html").render(
-                site=site, album=album, next_album=nxt, rel="../..", year=year
+                site=site, album=album, next_album=nxt, qr=qr_photo,
+                rel="../..", year=year,
             ),
             encoding="utf-8",
         )
@@ -64,7 +66,7 @@ def render_site(
     about_page.parent.mkdir(parents=True, exist_ok=True)
     about_page.write_text(
         env.get_template("about.html").render(
-            site=site, about_photo=about_photo, rel="..", year=year
+            site=site, about_photo=about_photo, qr=qr_photo, rel="..", year=year
         ),
         encoding="utf-8",
     )

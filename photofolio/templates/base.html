@@ -40,10 +40,28 @@
         <span class="footer-tagline">{{ site.tagline }}</span>
         {% endif %}
       </div>
+      {% if qr %}
+      <div class="footer-contact">
+        <div class="qr-card" title="微信扫一扫">
+          <span class="qr-tape qr-tape--l"></span>
+          <span class="qr-tape qr-tape--r"></span>
+          <img src="{{ rel }}/{{ qr.src }}"
+               width="{{ qr.width }}" height="{{ qr.height }}"
+               alt="微信二维码" loading="lazy" decoding="async">
+        </div>
+        <div class="qr-caption">
+          <span class="qr-kicker">WeChat</span>
+          <span class="qr-text">扫码加我 · 约拍聊聊</span>
+          {% if site.social.wechat %}
+          <span class="qr-id">微信号 {{ site.social.wechat }}</span>
+          {% endif %}
+        </div>
+      </div>
+      {% endif %}
       <div class="footer-meta">
         <span class="copyright">&copy; {{ year }} {{ site.author or site.title }}</span>
         <div class="footer-links">
-          {% for key, url in site.social.items() if url %}
+          {% for key, url in site.social.items() if url and key != 'wechat' %}
           {% set href = 'mailto:' ~ url if key == 'email' and not url.startswith('mailto:') else url %}
           <a href="{{ href }}" target="_blank" rel="noopener">{{ key }}</a>
           {% endfor %}

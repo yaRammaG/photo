@@ -11,7 +11,7 @@ from pathlib import Path
 import click
 import yaml
 
-from .images import process_photo
+from .images import process_photo, process_qr
 from .render import render_site
 from .scanner import make_photo_id, scan_albums
 
@@ -25,6 +25,7 @@ social:
   github: ""                  # 如 https://github.com/xxx
   instagram: ""               # 如 https://instagram.com/xxx
   email: ""                   # 如 me@example.com
+  wechat: ""                  # 微信号（选填，配合 photos/qr.png 二维码展示）
 hero_photo: ""                # 首页主图，如 photos/street/001.jpg
 custom_domain: ""             # 自定义域名，如 photo.example.com（留空则用 github.io）
 """
@@ -155,6 +156,7 @@ def build_site(root: Path) -> tuple[int, int, float]:
         albums,
         hero=resolve_hero(root, config, albums),
         about_photo=process_about_photo(photos_dir, dist),
+        qr_photo=process_qr_photo(photos_dir, dist),
     )
     return len(albums), total, time.time() - started
 
@@ -194,6 +196,20 @@ def process_about_photo(photos_dir: Path, dist: Path) -> dict | None:
     out_dir = dist / "about" / "img"
     out_dir.mkdir(parents=True, exist_ok=True)
     return process_photo(src, out_dir, "about")
+
+
+def process_qr_photo(photos_dir: Path, dist: Path) -> dict | None:
+    """处理 photos/qr.png 等微信二维码（无损管线），无则返回 None。"""
+    src = None
+    for ext in (".png", ".jpg", ".jpeg", ".webp"):
+        p = photos_dir / f"qr{ext}"
+        if p.is_file():
+            src = p
+            break
+    if src is None:
+        return None
+    info = process_qr(src, dist / "contact" / "qr.png")
+    return {"src": "contact/qr.png", **info}
 
 
 @cli.command()

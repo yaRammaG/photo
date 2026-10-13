@@ -9,12 +9,12 @@ IMAGE_EXTS = {".jpg", ".jpeg", ".png", ".webp", ".tif", ".tiff", ".bmp"}
 
 
 def slugify(name: str) -> str:
-    slug = re.sub(r"[^a-zA-Z0-9_-]+", "-", name.strip()).strip("-")
+    slug = re.sub(r"[^\w-]+", "-", name.strip()).strip("-")
     return slug or "album"
 
 
 def make_photo_id(stem: str, index: int, seen: set[str]) -> str:
-    pid = re.sub(r"[^a-zA-Z0-9_-]+", "_", stem).strip("_") or f"{index:03d}"
+    pid = re.sub(r"[^\w-]+", "_", stem).strip("_") or f"{index:03d}"
     base, n = pid, 2
     while pid in seen:
         pid = f"{base}-{n}"

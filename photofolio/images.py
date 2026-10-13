@@ -11,6 +11,7 @@ from PIL import Image, ImageFilter, ImageOps
 THUMB_WIDTH = 600
 DISPLAY_WIDTH = 1600
 LQIP_WIDTH = 16
+QR_MAX_WIDTH = 800
 
 # EXIF tag：IFD0
 TAG_MAKE = 271
@@ -169,3 +170,23 @@ def process_photo(src: Path, out_dir: Path, photo_id: str) -> dict:
         "orientation": "landscape" if disp_w >= disp_h else "portrait",
         "exif": exif_data,
     }
+
+
+def process_qr(src: Path, out_path: Path) -> dict:
+    """处理二维码：白底合成 + 无损 PNG（保证扫码清晰），过大时等比缩小。"""
+    with Image.open(src) as im:
+        im = ImageOps.exif_transpose(im)
+        if im.mode in ("RGBA", "LA"):
+            bg = Image.new("RGBA", im.size, (255, 255, 255, 255))
+            im = Image.alpha_composite(bg, im.convert("RGBA"))
+        if im.mode != "RGB":
+            im = im.convert("RGB")
+        if im.width > QR_MAX_WIDTH:
+            im = im.resize(
+                (QR_MAX_WIDTH, max(1, round(im.height * QR_MAX_WIDTH / im.width))),
+                Image.Resampling.LANCZOS,
+            )
+        out_path.parent.mkdir(parents=True, exist_ok=True)
+        im.save(out_path, "PNG", optimize=True)
+        w, h = im.size
+    return {"width": w, "height": h}

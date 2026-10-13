@@ -472,6 +472,149 @@ html.lenis body {
   color: var(--ink);
 }
 
+/* ---------- Contact：微信二维码相纸卡片 ---------- */
+.footer-contact {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.qr-card {
+  position: relative;
+  padding: 9px;
+  background: #fff;
+  border-radius: 2px;
+  transform: rotate(-2.4deg);
+  box-shadow:
+    0 1px 2px rgba(27, 25, 21, 0.1),
+    0 14px 30px -14px rgba(27, 25, 21, 0.35);
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.25, 1.1),
+    box-shadow 0.5s ease;
+}
+
+.qr-card:hover {
+  transform: rotate(0deg) translateY(-3px);
+  box-shadow:
+    0 2px 4px rgba(27, 25, 21, 0.1),
+    0 22px 44px -16px rgba(27, 25, 21, 0.45);
+}
+
+.qr-card img {
+  display: block;
+  width: 104px;
+  height: auto;
+}
+
+/* 和纸胶带 */
+.qr-tape {
+  position: absolute;
+  width: 44px;
+  height: 13px;
+  background: rgba(181, 175, 163, 0.42);
+  box-shadow: 0 1px 2px rgba(27, 25, 21, 0.08);
+}
+
+.qr-tape--l {
+  top: -6px;
+  left: -13px;
+  transform: rotate(-38deg);
+}
+
+.qr-tape--r {
+  top: -6px;
+  right: -13px;
+  transform: rotate(38deg);
+}
+
+/* 悬停时的微信绿扫描线 */
+.qr-card::after {
+  content: "";
+  position: absolute;
+  left: 9px;
+  right: 9px;
+  top: 9px;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, transparent, #07c160 18%, #07c160 82%, transparent);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.qr-card:hover::after {
+  animation: qr-scan 1.5s ease-in-out infinite;
+}
+
+@keyframes qr-scan {
+  0% {
+    top: 9px;
+    opacity: 0;
+  }
+
+  12% {
+    opacity: 0.85;
+  }
+
+  88% {
+    opacity: 0.85;
+  }
+
+  100% {
+    top: calc(100% - 11px);
+    opacity: 0;
+  }
+}
+
+.qr-caption {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.qr-kicker {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* 微信绿呼吸点 */
+.qr-kicker::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #07c160;
+  animation: qr-pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes qr-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 3px rgba(7, 193, 96, 0.18);
+  }
+
+  50% {
+    box-shadow: 0 0 0 6px rgba(7, 193, 96, 0.07);
+  }
+}
+
+.qr-text {
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.qr-id {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+}
+
 /* ---------- PhotoSwipe 定制 ---------- */
 .pswp {
   --pswp-bg: #0d0c0a;
@@ -586,5 +729,13 @@ html.lenis body {
 
   .footer-meta {
     align-items: flex-start;
+  }
+
+  .footer-contact {
+    gap: 16px;
+  }
+
+  .qr-card img {
+    width: 88px;
   }
 }
