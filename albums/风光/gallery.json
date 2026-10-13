@@ -1,0 +1,25 @@
+{
+  "title": "风光",
+  "photos": [
+    {
+      "id": "微信图片_20261013231345_69_1",
+      "title": "",
+      "thumb": "img/微信图片_20261013231345_69_1-600.webp",
+      "display": "img/微信图片_20261013231345_69_1-1600.webp",
+      "full": "img/微信图片_20261013231345_69_1-full.jpg",
+      "lqip": "data:image/webp;base64,UklGRjwAAABXRUJQVlA4IDAAAADwAQCdASoQAAsAA4BaJZACdAEQOtGKwCgA3cLFJHG/iHjqr8fPKvFyn0h7NvCloAA=",
+      "width": 1600,
+      "height": 1067,
+      "orientation": "landscape",
+      "exif": {
+        "camera": "",
+        "lens": "FE 16mm F1.8 G",
+        "focal": "16mm",
+        "aperture": "f/8.0",
+        "shutter": "1/30",
+        "iso": 160,
+        "line": "16mm f/8.0 · 1/30s · ISO 160"
+      }
+    }
+  ]
+}

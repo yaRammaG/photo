@@ -1,0 +1,25 @@
+{
+  "title": "星空",
+  "photos": [
+    {
+      "id": "20261013225105_55_1",
+      "title": "",
+      "thumb": "img/20261013225105_55_1-600.webp",
+      "display": "img/20261013225105_55_1-1600.webp",
+      "full": "img/20261013225105_55_1-full.jpg",
+      "lqip": "data:image/webp;base64,UklGRkIAAABXRUJQVlA4IDYAAACQAgCdASoQABgAA4BaJZwDDNEPAASpGGRvQhQwAAD++RMoXPpckHMxZGJZtbQ4TZryhlEAAAA=",
+      "width": 1600,
+      "height": 2401,
+      "orientation": "portrait",
+      "exif": {
+        "camera": "",
+        "lens": "",
+        "focal": "16mm",
+        "aperture": "f/1.8",
+        "shutter": "200",
+        "iso": 1250,
+        "line": "16mm f/1.8 · 200s · ISO 1250"
+      }
+    }
+  ]
+}
