@@ -1,0 +1,45 @@
+{
+  "title": "city",
+  "photos": [
+    {
+      "id": "DSC00010",
+      "title": "",
+      "thumb": "img/DSC00010-600.webp",
+      "display": "img/DSC00010-1600.webp",
+      "full": "img/DSC00010-full.jpg",
+      "lqip": "data:image/webp;base64,UklGRjgAAABXRUJQVlA4ICwAAADQAQCdASoQAAsAA4BaJZQCdAEOuK+VwAD+7az7Tspd68fcgsSZzFwiLgAAAA==",
+      "width": 1600,
+      "height": 1067,
+      "orientation": "landscape",
+      "exif": {
+        "camera": "SONY ILCE-7RM5",
+        "lens": "FE 16mm F1.8 G",
+        "focal": "16mm",
+        "aperture": "f/8.0",
+        "shutter": "1/400",
+        "iso": 125,
+        "line": "SONY ILCE-7RM5 · 16mm f/8.0 · 1/400s · ISO 125"
+      }
+    },
+    {
+      "id": "DSC09825",
+      "title": "",
+      "thumb": "img/DSC09825-600.webp",
+      "display": "img/DSC09825-1600.webp",
+      "full": "img/DSC09825-full.jpg",
+      "lqip": "data:image/webp;base64,UklGRjAAAABXRUJQVlA4ICQAAADQAQCdASoQAAsAA4BaJZwCdAEPC+g6gAD+462at5oP+oH8AAA=",
+      "width": 1600,
+      "height": 1067,
+      "orientation": "landscape",
+      "exif": {
+        "camera": "SONY ILCE-7RM5",
+        "lens": "FE 70-200mm F2.8 GM OSS II",
+        "focal": "106mm",
+        "aperture": "f/5.0",
+        "shutter": "1/200",
+        "iso": 100,
+        "line": "SONY ILCE-7RM5 · 106mm f/5.0 · 1/200s · ISO 100"
+      }
+    }
+  ]
+}

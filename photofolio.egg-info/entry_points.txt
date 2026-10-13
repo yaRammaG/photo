@@ -1,0 +1,2 @@
+[console_scripts]
+photofolio = photofolio.cli:cli
